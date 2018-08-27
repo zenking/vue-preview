@@ -63,7 +63,7 @@
 
 <script>
 export default {
-  name: 'vue-preview',
+  name: 'vue-pre-view',
   props: {
     infoData: {
       type: Object,
