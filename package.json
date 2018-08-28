@@ -1,7 +1,7 @@
 {
   "name": "@zenking/vue-pre-view",
   "description": "A Vue.js project",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "zhangling <328646134@qq.com>",
   "license": "MIT",
   "main": "dist/vue-pre-view.js",
