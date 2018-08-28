@@ -26,7 +26,7 @@ export default {
         // 推荐商品列表
         goodsList: [],
         // 往期主题
-        journalList: []
+        history: []
       }
     }
   }

@@ -14,7 +14,7 @@
       <div v-for="(item,index) in infoData.bgUrls" :key="index" class="imgwrap">
         <img :src="item" class="weekly-img">
       </div>
-      <div class="push-goods-wrap">
+      <div v-if="infoData.goodsList.length" class="push-goods-wrap">
         <div class="push-title-wrap">
           <span class="push-title">优选单品</span>
         </div>
@@ -34,13 +34,13 @@
           </div>
         </div>
       </div>
-      <div class="push-goods-wrap past">
+      <div v-if="infoData.history.length" class="push-goods-wrap past">
         <div class="push-title-wrap">
           <span class="push-title">往期回顾</span>
         </div>
         <div class="past-weekly-list">
           <div class="weekly-item-wrap">
-            <div v-for="(item,index) in infoData.journalList" :key="index" class="weekly-item">
+            <div v-for="(item,index) in infoData.history" :key="index" class="weekly-item">
               <img :src="item.coverUrl" alt="周刊封面" class="cover">
               <div class="detail">
                 <div class="weekly-header">
@@ -85,7 +85,7 @@ export default {
       info: {
         bgUrls: [],
         goodsList: [],
-        journalList: []
+        history: []
       }
     }
   },
