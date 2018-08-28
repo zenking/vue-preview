@@ -1,18 +1,19 @@
 <template>
   <div :info-data="info" class="weekly">
     <div class="contentX">
-      <div class="header" >
+      <div v-if="false" class="header" >
         <div class="title-wrap">
           <p class="title">{{ infoData.name }} </p>
-          <p class="number">{{ infoData.edition }}期</p>
+          <p class="number">第{{ infoData.edition }}期</p>
         </div>
         <div class="slogan">
-          <img class="daoyu" src="/static/img/daoyu.png" >
+          <img class="daoyu" src="../assets/daoyu.png" >
           <div class="text">{{ infoData.introduction }}</div>
         </div>
       </div>
-      <div v-for="(item,index) in infoData.bgUrls" :key="index" class="imgwrap">
+      <div v-for="(item,index) in infoData.bgUrls" :key="index" style="font-size:0" class="imgwrap">
         <img :src="item" class="weekly-img">
+        <!-- <img :src="item + '?x-oss-process=image/quality,Q_80'" class="weekly-img"> -->
       </div>
       <div v-if="infoData.goodsList.length" class="push-goods-wrap">
         <div class="push-title-wrap">
@@ -20,7 +21,7 @@
         </div>
         <div class="goods-list">
           <div v-for="(item,index) in infoData.goodsList" :key="index" class="goods-item">
-            <div class="item-imgwrap">
+            <div style="font-size:0" class="item-imgwrap">
               <!-- <img src="/static/img/avt.png" alt="商品图片"> -->
               <img :src="item.goodsImg" alt="商品图片">
               <div class="item-detail">
@@ -39,20 +40,10 @@
           <span class="push-title">往期回顾</span>
         </div>
         <div class="past-weekly-list">
-          <div class="weekly-item-wrap">
             <div v-for="(item,index) in infoData.history" :key="index" class="weekly-item">
+              <!-- <img :src="item.coverUrl+ '?x-oss-process=image/quality,Q_80'" alt="周刊封面" class="cover"> -->
               <img :src="item.coverUrl" alt="周刊封面" class="cover">
-              <div class="detail">
-                <div class="weekly-header">
-                  <div class="title">{{ item.name }}</div>
-                  <div class="number">{{ item.edition }}期</div>
-                </div>
-                <div class="content">
-                  <div class="theme">{{ item.Introduction }}</div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
 
       </div>
@@ -74,39 +65,17 @@ export default {
   },
   data() {
     return {
-      styleObject: {
-        backgroundImage: 'url(/static/img/weekly-bg.png)',
-        backgroundPosition: '0 0',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% auto',
-        backgroundColor: '#000',
-        width: '100%'
-      },
       info: {
         bgUrls: [],
         goodsList: [],
         history: []
       }
     }
-  },
-  watch: {
-    $route() {
-      // 监听数据更新
-      this.getUpdate()
-    }
-  },
-  created() {
-    this.getUpdate()
-  },
-  methods: {
-    getUpdate() {
-      // 数据更新
-    }
   }
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="less" scoped>
 .contentX{
   width: 100%;
   height:100% ;
@@ -237,6 +206,7 @@ export default {
           width: 100%;
           padding: 2px;
           box-sizing: border-box;
+          border-radius: 4px;
           box-shadow:1px 1px 5px #333333;
           img{
             display: block;
@@ -289,16 +259,14 @@ export default {
       width: 100%;
       overflow: hidden;
       box-sizing: border-box;
-      .weekly-item-wrap{
-        width: 100%;
-        border-radius: 4px;
-        overflow: hidden;
-        background: #1f8960;
-        .weekly-item{
-          display: flex;
+      .weekly-item{
+           width: 100%;
+           border-radius: 4px;
+           overflow: hidden;
+           font-size: 0;
           .cover{
-            width: 135px;
-            height: 135px;
+            width: 100%;
+            // max-height: 135px;
             display: inline-block;
             margin: 0;
           }
@@ -337,6 +305,12 @@ export default {
             }
           }
         }
+      .weekly-item-wrap{
+        width: 100%;
+        border-radius: 4px;
+        overflow: hidden;
+        // background: #1f8960;
+        
       }
     }
   }
